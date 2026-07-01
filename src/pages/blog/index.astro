@@ -14,94 +14,69 @@ const posts = (await getCollection('blog')).sort(
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Blog // ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`blog // ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
 			.page-header {
-				margin-bottom: 2.5rem;
+				margin-bottom: 2rem;
 				border-bottom: 1px solid var(--border);
-				padding-bottom: 1.5rem;
+				padding-bottom: 1rem;
 			}
 			.page-title {
-				font-size: 2.2rem;
-				font-weight: 700;
-				letter-spacing: -0.035em;
+				font-size: 1.8rem;
+				font-weight: 600;
 				color: #fff;
-				margin: 0 0 0.5rem 0;
+				margin: 0 0 0.4rem 0;
 			}
 			.page-desc {
 				color: var(--text-muted);
-				font-size: 1rem;
+				font-size: 0.95rem;
 				margin: 0;
 			}
-			.entry-list {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-				display: flex;
-				flex-direction: column;
-				gap: 0.5rem;
+			.entry-table {
+				width: 100%;
+				border-collapse: collapse;
 			}
-			.entry-link {
-				display: flex;
-				align-items: baseline;
-				justify-content: space-between;
-				padding: 1rem 1.25rem;
-				background: var(--bg-surface);
-				border: 1px solid var(--border);
-				border-radius: 10px;
-				text-decoration: none;
-				transition: all 0.15s ease;
-				gap: 1.5rem;
+			.entry-table tr {
+				border-bottom: 1px solid var(--border);
 			}
-			.entry-link:hover {
-				background: var(--bg-surface-hover);
-				border-color: var(--border-active);
-				transform: translateX(4px);
+			.entry-table td {
+				padding: 0.75rem 0;
+				vertical-align: baseline;
 			}
-			.entry-left {
-				display: flex;
-				align-items: baseline;
-				gap: 1.5rem;
-				flex-grow: 1;
-				min-width: 0;
-			}
-			.entry-date {
+			.col-date {
 				font-family: var(--font-mono);
-				font-size: 0.85rem;
+				font-size: 0.88rem;
 				color: var(--text-dim);
+				width: 130px;
 				white-space: nowrap;
-				flex-shrink: 0;
-				width: 100px;
 			}
-			.entry-title {
-				font-size: 1.05rem;
-				font-weight: 600;
+			.col-title a {
+				font-size: 1rem;
+				font-weight: 500;
 				color: var(--text-primary);
-				transition: color 0.15s ease;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
+				text-decoration: none;
 			}
-			.entry-link:hover .entry-title {
-				color: #fff;
+			.col-title a:hover {
+				color: var(--accent);
+				text-decoration: underline;
 			}
 			.empty-state {
 				color: var(--text-dim);
 				font-style: italic;
-				padding: 3rem 0;
-				text-align: center;
-				background: var(--bg-surface);
-				border: 1px dashed var(--border);
-				border-radius: 10px;
+				padding: 2rem 0;
 			}
-			@media (max-width: 720px) {
-				.entry-left {
-					flex-direction: column;
-					gap: 0.3rem;
+			@media (max-width: 768px) {
+				.entry-table td {
+					display: block;
+					padding: 0.2rem 0;
 				}
-				.entry-date {
+				.entry-table tr {
+					padding: 0.75rem 0;
+					display: block;
+				}
+				.col-date {
 					width: auto;
-					font-size: 0.78rem;
+					font-size: 0.8rem;
 				}
 			}
 		</style>
@@ -109,26 +84,24 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
-			<header class="page-header">
-				<h1 class="page-title">Blog & Articles</h1>
-				<p class="page-desc">Long-form technical writing, architectural notes, and concurrency deep-dives.</p>
-			</header>
+			<div class="page-header">
+				<h1 class="page-title">blog</h1>
+				<p class="page-desc">Long-form technical writing, architectural notes, and systems deep-dives.</p>
+			</div>
 			{
 				posts.length === 0 ? (
 					<div class="empty-state">No blog posts published yet.</div>
 				) : (
-					<ul class="entry-list">
-						{posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`} class="entry-link">
-									<div class="entry-left">
-										<span class="entry-date"><FormattedDate date={post.data.pubDate} /></span>
-										<span class="entry-title">{post.data.title}</span>
-									</div>
-								</a>
-							</li>
-						))}
-					</ul>
+					<table class="entry-table">
+						<tbody>
+							{posts.map((post) => (
+								<tr>
+									<td class="col-date"><FormattedDate date={post.data.pubDate} /></td>
+									<td class="col-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></td>
+								</tr>
+							))}
+						</tbody>
+					</table>
 				)
 			}
 		</main>

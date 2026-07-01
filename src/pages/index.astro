@@ -10,142 +10,75 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			.hero-section {
-				margin-bottom: 3.5rem;
+			.hero {
+				margin-bottom: 3rem;
+				border-bottom: 1px solid var(--border);
+				padding-bottom: 1.5rem;
 			}
-			.mono-tag {
-				font-family: var(--font-mono);
-				font-size: 0.75rem;
+			.hero h1 {
+				font-size: 2rem;
 				font-weight: 600;
-				color: var(--accent);
-				letter-spacing: 0.08em;
-				margin-bottom: 0.75rem;
-				display: inline-block;
-				background: var(--accent-glow);
-				border: 1px solid rgba(56, 189, 248, 0.25);
-				padding: 0.2rem 0.6rem;
-				border-radius: 9999px;
-			}
-			.hero-title {
-				font-size: 2.75rem;
-				font-weight: 700;
-				letter-spacing: -0.04em;
-				margin-bottom: 1rem;
+				margin-bottom: 0.5rem;
 				color: #fff;
 			}
-			.hero-subtitle {
-				font-size: 1.15rem;
-				line-height: 1.6;
+			.hero p {
 				color: var(--text-muted);
-				max-width: 600px;
-				margin-bottom: 0;
+				font-size: 1.05rem;
+				max-width: 800px;
+				margin: 0;
 			}
-			.section-heading {
-				font-size: 0.8rem;
+			.section-title {
 				font-family: var(--font-mono);
+				font-size: 0.85rem;
 				text-transform: uppercase;
-				letter-spacing: 0.08em;
+				letter-spacing: 0.05em;
 				color: var(--text-dim);
-				margin-bottom: 1.25rem;
+				margin: 2.5rem 0 1rem 0;
 				border-bottom: 1px solid var(--border);
-				padding-bottom: 0.5rem;
+				padding-bottom: 0.3rem;
 			}
-			.cards-grid {
+			.grid-2col {
 				display: grid;
-				grid-template-columns: 1fr;
-				gap: 1rem;
-				margin-bottom: 3.5rem;
+				grid-template-columns: 1fr 1fr;
+				gap: 2rem;
 			}
-			.project-card {
-				background: var(--bg-surface);
-				border: 1px solid var(--border);
-				border-radius: 12px;
-				padding: 1.5rem;
-				transition: all 0.2s ease;
-				position: relative;
-				display: block;
-				text-decoration: none;
+			.item {
+				margin-bottom: 1.25rem;
 			}
-			.project-card:hover {
-				background: var(--bg-surface-hover);
-				border-color: var(--border-active);
-				transform: translateY(-2px);
-				box-shadow: var(--box-shadow);
-			}
-			.card-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 0.5rem;
-			}
-			.card-title {
+			.item h3 {
 				font-size: 1.1rem;
 				font-weight: 600;
+				margin: 0 0 0.3rem 0;
 				color: var(--text-primary);
-				margin: 0;
 			}
-			.card-badge {
-				font-family: var(--font-mono);
-				font-size: 0.72rem;
-				color: var(--accent);
-				background: rgba(56, 189, 248, 0.08);
-				border: 1px solid rgba(56, 189, 248, 0.2);
-				padding: 0.1rem 0.5rem;
-				border-radius: 4px;
-			}
-			.card-desc {
-				color: var(--text-muted);
+			.item p {
 				font-size: 0.95rem;
+				color: var(--text-muted);
+				margin: 0;
 				line-height: 1.5;
+			}
+			.nav-list {
+				list-style: none;
+				padding: 0;
 				margin: 0;
 			}
-			.nav-grid {
-				display: grid;
-				grid-template-columns: 1fr;
-				gap: 0.75rem;
-			}
-			.nav-card {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 1.2rem 1.5rem;
-				background: var(--bg-surface);
-				border: 1px solid var(--border);
-				border-radius: 10px;
-				text-decoration: none;
-				transition: all 0.15s ease;
-			}
-			.nav-card:hover {
-				background: var(--bg-surface-hover);
-				border-color: var(--border-active);
-				transform: translateX(4px);
-			}
-			.nav-card-left {
-				display: flex;
-				flex-direction: column;
-				gap: 0.2rem;
-			}
-			.nav-card-title {
-				font-weight: 600;
-				color: var(--text-primary);
-				font-size: 1.05rem;
-			}
-			.nav-card-sub {
-				color: var(--text-muted);
-				font-size: 0.88rem;
-			}
-			.nav-arrow {
+			.nav-list li {
+				margin-bottom: 0.5rem;
 				font-family: var(--font-mono);
-				color: var(--text-dim);
-				transition: color 0.15s ease, transform 0.15s ease;
+				font-size: 0.95rem;
 			}
-			.nav-card:hover .nav-arrow {
-				color: var(--accent);
-				transform: translateX(3px);
+			.nav-list a {
+				color: var(--text-primary);
 			}
-			@media (max-width: 720px) {
-				.hero-title {
-					font-size: 2.2rem;
+			.nav-list span {
+				color: var(--text-muted);
+				font-family: var(--font-sans);
+				margin-left: 0.5rem;
+			}
+			@media (max-width: 768px) {
+				.grid-2col {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
 				}
 			}
 		</style>
@@ -153,59 +86,35 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<section class="hero-section">
-				<span class="mono-tag">PUBLIC ACCOUNTABILITY // DEVLOG</span>
-				<h1 class="hero-title">Siddhant</h1>
-				<p class="hero-subtitle">
-					Systems programming, concurrency, and low-level engineering log. Documenting coursework, sprint progress, and technical deep-dives in the open.
+			<div class="hero">
+				<h1>Siddhant</h1>
+				<p>
+					Systems programming, concurrency, and low-level software engineering. Public coursework logs and daily sprint accountability.
 				</p>
-			</section>
-
-			<div class="section-heading">Active Focus Areas</div>
-			<div class="cards-grid">
-				<div class="project-card">
-					<div class="card-header">
-						<h3 class="card-title">KAIST CS Concurrency Course</h3>
-						<span class="card-badge">SYS // MEM</span>
-					</div>
-					<p class="card-desc">
-						Deep dive into hardware memory models, atomic memory ordering, and lock-free concurrent data structures in systems programming.
-					</p>
-				</div>
-				<div class="project-card">
-					<div class="card-header">
-						<h3 class="card-title">The Rust Programming Language</h3>
-						<span class="card-badge">BROWN UNIV EDITION</span>
-					</div>
-					<p class="card-desc">
-						Working through the interactive edition of the Rust Book. Rigorous focus on ownership, borrowing rules, lifetimes, and memory safety without garbage collection.
-					</p>
-				</div>
 			</div>
 
-			<div class="section-heading">Explore Engineering Log</div>
-			<div class="nav-grid">
-				<a href="/diary" class="nav-card">
-					<div class="nav-card-left">
-						<span class="nav-card-title">Diary & Tasks</span>
-						<span class="nav-card-sub">Daily sprint checklists, evening progress reports, and coursework accountability.</span>
+			<div class="grid-2col">
+				<div>
+					<div class="section-title">Current Focus</div>
+					<div class="item">
+						<h3>KAIST CS Concurrency Course</h3>
+						<p>Hardware memory models, atomic memory ordering, and lock-free concurrent data structures.</p>
 					</div>
-					<span class="nav-arrow">-&gt;</span>
-				</a>
-				<a href="/blog" class="nav-card">
-					<div class="nav-card-left">
-						<span class="nav-card-title">Blog & Articles</span>
-						<span class="nav-card-sub">Long-form technical writing, architectural notes, and concurrency concepts.</span>
+					<div class="item">
+						<h3>The Rust Programming Language</h3>
+						<p>Interactive edition of the Brown Rust Book. Focus on ownership rules, borrowing, and lifetimes.</p>
 					</div>
-					<span class="nav-arrow">-&gt;</span>
-				</a>
-				<a href="/about" class="nav-card">
-					<div class="nav-card-left">
-						<span class="nav-card-title">About Me</span>
-						<span class="nav-card-sub">Background, motivation, and engineering philosophy.</span>
-					</div>
-					<span class="nav-arrow">-&gt;</span>
-				</a>
+				</div>
+
+				<div>
+					<div class="section-title">Navigation</div>
+					<ul class="nav-list">
+						<li><a href="/diary">/diary</a> <span>Daily action items, evening progress reports, sprint checklists.</span></li>
+						<li><a href="/blog">/blog</a> <span>Long-form technical writing, architectural notes, concurrency concepts.</span></li>
+						<li><a href="/about">/about</a> <span>Background and engineering philosophy.</span></li>
+						<li><a href="https://github.com/haddnist" target="_blank">github.com/haddnist</a> <span>Public repositories and code.</span></li>
+					</ul>
+				</div>
 			</div>
 		</main>
 		<Footer />

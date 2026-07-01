@@ -12,57 +12,37 @@ const { title, description, pubDate, updatedDate, status } = Astro.props;
 
 <html lang="en">
 	<head>
-		<BaseHead title={`${title} // Siddhant`} description={description || 'Engineering log'} />
+		<BaseHead title={`${title} // siddhant`} description={description || 'Engineering log'} />
 		<style>
 			article {
-				max-width: 680px;
-				margin: 0 auto;
+				width: 100%;
 			}
 			.post-header {
-				margin-bottom: 2.5rem;
+				margin-bottom: 2rem;
 				border-bottom: 1px solid var(--border);
-				padding-bottom: 1.75rem;
+				padding-bottom: 1.25rem;
 			}
 			.meta-row {
-				display: flex;
-				align-items: center;
-				gap: 0.75rem;
-				margin-bottom: 0.85rem;
 				font-family: var(--font-mono);
-				font-size: 0.82rem;
-				color: var(--text-muted);
-			}
-			.status-pill {
-				color: var(--accent);
-				background: var(--accent-glow);
-				border: 1px solid rgba(56, 189, 248, 0.3);
-				padding: 0.15rem 0.5rem;
-				border-radius: 9999px;
-				font-weight: 500;
-				font-size: 0.75rem;
-				letter-spacing: 0.02em;
+				font-size: 0.85rem;
+				color: var(--text-dim);
+				margin-bottom: 0.5rem;
 			}
 			.post-title {
-				font-family: var(--font-sans);
-				font-size: 2.4rem;
-				font-weight: 700;
-				letter-spacing: -0.035em;
-				line-height: 1.2;
+				font-size: 2rem;
+				font-weight: 600;
 				color: var(--text-primary);
 				margin: 0;
 			}
 			.last-updated-on {
 				font-style: italic;
 				color: var(--text-dim);
-				font-size: 0.8rem;
-				margin-top: 0.4rem;
+				font-size: 0.85rem;
+				margin-top: 0.5rem;
 			}
-			.prose {
-				color: #d1d5db;
-			}
-			@media (max-width: 720px) {
+			@media (max-width: 768px) {
 				.post-title {
-					font-size: 1.85rem;
+					font-size: 1.6rem;
 				}
 			}
 		</style>
@@ -75,7 +55,7 @@ const { title, description, pubDate, updatedDate, status } = Astro.props;
 				<header class="post-header">
 					<div class="meta-row">
 						<FormattedDate date={pubDate} />
-						{status && <><span>•</span><span class="status-pill">{status}</span></>}
+						{status && <span> [{status}]</span>}
 					</div>
 					<h1 class="post-title">{title}</h1>
 					{

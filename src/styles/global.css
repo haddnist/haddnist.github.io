@@ -1,32 +1,33 @@
 /* 
- * Bespoke Human-Crafted Systems Engineering Aesthetic
- * Inspired by Linear, Stripe Press, and Apple Developer
+ * High-Density Industrial Engineering Aesthetic
+ * Clean horizontal layout, zero AI pill badges, zero rounded UI slop.
  */
 
 :root {
-	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-	--font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	--font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 	
-	--bg-root: #090a0f;
-	--bg-surface: #12131c;
-	--bg-surface-hover: #1b1d2a;
-	--border: rgba(255, 255, 255, 0.08);
-	--border-active: rgba(255, 255, 255, 0.18);
+	--bg-root: #0a0b0e;
+	--bg-surface: #101217;
+	--bg-surface-hover: #161920;
+	--border: #222630;
+	--border-active: #383f50;
 	
-	--text-primary: #f3f4f6;
-	--text-muted: #8b94a0;
-	--text-dim: #525b66;
+	--text-primary: #e6edf3;
+	--text-muted: #8b949e;
+	--text-dim: #5c6470;
 	
-	--accent: #38bdf8;
-	--accent-glow: rgba(56, 189, 248, 0.15);
-	--success: #22c55e;
-	
-	--box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+	--accent: #58a6ff;
+	--success: #3fb950;
 }
 
 ::selection {
-	background: rgba(56, 189, 248, 0.25);
+	background: rgba(88, 166, 255, 0.25);
 	color: #fff;
+}
+
+* {
+	box-sizing: border-box;
 }
 
 html {
@@ -43,36 +44,32 @@ body {
 	text-align: left;
 	background: var(--bg-root);
 	color: var(--text-primary);
-	font-size: 16px;
-	line-height: 1.65;
+	font-size: 15px;
+	line-height: 1.6;
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 main {
 	flex: 1 0 auto;
-	width: 720px;
-	max-width: calc(100% - 3rem);
+	width: 100%;
+	max-width: 1080px;
 	margin: 0 auto;
-	padding: 3.5rem 0;
+	padding: 2.5rem 2rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 0 0 0.75rem 0;
+	margin: 0 0 0.6rem 0;
 	color: var(--text-primary);
-	line-height: 1.2;
-	font-weight: 700;
-	letter-spacing: -0.025em;
+	line-height: 1.25;
+	font-weight: 600;
 }
 
-h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.035em; }
-h2 { font-size: 1.5rem; margin-top: 2.5rem; }
-h3 { font-size: 1.25rem; margin-top: 2rem; }
-h4 { font-size: 1.1rem; }
-h5 { font-size: 1rem; }
+h1 { font-size: 1.85rem; font-weight: 600; letter-spacing: -0.02em; }
+h2 { font-size: 1.4rem; margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+h3 { font-size: 1.15rem; margin-top: 1.5rem; }
 
 strong, b {
 	font-weight: 600;
@@ -82,26 +79,23 @@ strong, b {
 a {
 	color: var(--accent);
 	text-decoration: none;
-	transition: color 0.15s ease;
 }
 
 a:hover {
 	text-decoration: underline;
-	text-underline-offset: 4px;
 }
 
 p {
 	margin-top: 0;
-	margin-bottom: 1.25rem;
+	margin-bottom: 1rem;
 	color: var(--text-muted);
 }
 
-/* Prose formatting for individual blog and diary entries */
 .prose p {
-	margin-bottom: 1.5rem;
-	font-size: 1.05rem;
-	line-height: 1.75;
-	color: #d1d5db;
+	margin-bottom: 1.25rem;
+	font-size: 1rem;
+	line-height: 1.7;
+	color: #c9d1d9;
 }
 
 .prose strong {
@@ -109,104 +103,81 @@ p {
 }
 
 .prose ul, .prose ol {
-	color: #d1d5db;
+	color: #c9d1d9;
 	padding-left: 1.5rem;
 	margin-bottom: 1.5rem;
-	font-size: 1.05rem;
-	line-height: 1.75;
+	font-size: 1rem;
+	line-height: 1.7;
 }
 
 .prose li {
-	margin-bottom: 0.5rem;
-}
-
-textarea, input {
-	font-family: var(--font-sans);
-	font-size: 15px;
-	background: var(--bg-surface);
-	color: #fff;
-	border: 1px solid var(--border);
-	padding: 0.6rem 0.8rem;
-	border-radius: 8px;
-	outline: none;
-	transition: border-color 0.15s ease;
-}
-
-textarea:focus, input:focus {
-	border-color: var(--accent);
+	margin-bottom: 0.4rem;
 }
 
 table {
 	width: 100%;
 	border-collapse: collapse;
-	margin: 2rem 0;
+	margin: 1.5rem 0;
 }
 
 table th, table td {
-	padding: 0.85rem 1rem;
+	padding: 0.6rem 0.8rem;
 	border-bottom: 1px solid var(--border);
 	text-align: left;
-	font-size: 0.95rem;
+	font-size: 0.9rem;
 }
 
 table th {
 	color: var(--text-primary);
 	background: var(--bg-surface);
 	font-weight: 600;
+	border-top: 1px solid var(--border);
 }
 
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 10px;
 	border: 1px solid var(--border);
 }
 
 code {
-	padding: 0.2em 0.4em;
-	background-color: rgba(255, 255, 255, 0.06);
-	color: #38bdf8;
+	padding: 0.15em 0.35em;
+	background-color: var(--bg-surface);
+	color: #e6edf3;
 	border: 1px solid var(--border);
-	border-radius: 4px;
 	font-size: 0.85em;
 	font-family: var(--font-mono);
 }
 
 pre {
-	padding: 1.25rem 1.5rem;
-	border-radius: 10px;
+	padding: 1rem 1.25rem;
 	background: var(--bg-surface) !important;
 	border: 1px solid var(--border);
 	overflow-x: auto;
-	margin: 1.75rem 0;
-	box-shadow: var(--box-shadow);
+	margin: 1.5rem 0;
 }
 
 pre > code {
 	all: unset;
-	color: #e4e4e7;
+	color: #e6edf3;
 	font-family: var(--font-mono);
 	font-size: 0.9rem;
-	line-height: 1.6;
+	line-height: 1.5;
 }
 
 blockquote {
-	border-left: 2px solid var(--accent);
-	padding: 0.25rem 0 0.25rem 1.25rem;
-	margin: 1.75rem 0;
+	border-left: 2px solid var(--border-active);
+	padding: 0.2rem 0 0.2rem 1rem;
+	margin: 1.5rem 0;
 	color: var(--text-muted);
-	font-style: italic;
-	background: linear-gradient(90deg, rgba(56, 189, 248, 0.05) 0%, transparent 100%);
-	border-radius: 0 8px 8px 0;
 }
 
 hr {
 	border: none;
 	border-top: 1px solid var(--border);
-	margin: 2.5rem 0;
+	margin: 2rem 0;
 }
 
-/* Linear-style Bespoke Checkbox for Sprint Checklists */
 ul.contains-task-list {
 	list-style: none;
 	padding-left: 0 !important;
@@ -215,23 +186,21 @@ ul.contains-task-list {
 .task-list-item {
 	display: flex;
 	align-items: center;
-	margin-bottom: 0.6rem !important;
+	margin-bottom: 0.5rem !important;
 }
 
 input[type="checkbox"] {
 	appearance: none;
 	-webkit-appearance: none;
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 	border: 1px solid var(--border-active);
-	border-radius: 5px;
 	background: var(--bg-root);
 	display: inline-grid;
 	place-content: center;
-	margin-right: 10px;
+	margin-right: 8px;
 	cursor: pointer;
 	flex-shrink: 0;
-	transition: all 0.15s ease;
 }
 
 input[type="checkbox"]:checked {
@@ -241,10 +210,9 @@ input[type="checkbox"]:checked {
 
 input[type="checkbox"]::before {
 	content: "";
-	width: 10px;
-	height: 10px;
+	width: 8px;
+	height: 8px;
 	transform: scale(0);
-	transition: 120ms transform ease-in-out;
 	box-shadow: inset 1em 1em #fff;
 	transform-origin: center;
 	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
@@ -258,15 +226,10 @@ footer {
 	flex-shrink: 0;
 }
 
-@media (max-width: 720px) {
-	body {
-		font-size: 15px;
-	}
+@media (max-width: 768px) {
 	main {
-		padding: 2rem 0;
-		width: calc(100% - 2rem);
+		padding: 1.5rem 1rem;
 	}
-	h1 { font-size: 1.85rem; }
 }
 
 .sr-only {
