@@ -10,43 +10,203 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			.nav-list {
-				list-style: none;
-				padding: 0;
-				margin: 1.5rem 0;
+			.hero-section {
+				margin-bottom: 3.5rem;
 			}
-			.nav-list li {
-				margin-bottom: 0.75rem;
-			}
-			.nav-list a {
+			.mono-tag {
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
 				font-weight: 600;
+				color: var(--accent);
+				letter-spacing: 0.08em;
+				margin-bottom: 0.75rem;
+				display: inline-block;
+				background: var(--accent-glow);
+				border: 1px solid rgba(56, 189, 248, 0.25);
+				padding: 0.2rem 0.6rem;
+				border-radius: 9999px;
+			}
+			.hero-title {
+				font-size: 2.75rem;
+				font-weight: 700;
+				letter-spacing: -0.04em;
+				margin-bottom: 1rem;
+				color: #fff;
+			}
+			.hero-subtitle {
+				font-size: 1.15rem;
+				line-height: 1.6;
+				color: var(--text-muted);
+				max-width: 600px;
+				margin-bottom: 0;
+			}
+			.section-heading {
+				font-size: 0.8rem;
+				font-family: var(--font-mono);
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--text-dim);
+				margin-bottom: 1.25rem;
+				border-bottom: 1px solid var(--border);
+				padding-bottom: 0.5rem;
+			}
+			.cards-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1rem;
+				margin-bottom: 3.5rem;
+			}
+			.project-card {
+				background: var(--bg-surface);
+				border: 1px solid var(--border);
+				border-radius: 12px;
+				padding: 1.5rem;
+				transition: all 0.2s ease;
+				position: relative;
+				display: block;
+				text-decoration: none;
+			}
+			.project-card:hover {
+				background: var(--bg-surface-hover);
+				border-color: var(--border-active);
+				transform: translateY(-2px);
+				box-shadow: var(--box-shadow);
+			}
+			.card-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 0.5rem;
+			}
+			.card-title {
+				font-size: 1.1rem;
+				font-weight: 600;
+				color: var(--text-primary);
+				margin: 0;
+			}
+			.card-badge {
+				font-family: var(--font-mono);
+				font-size: 0.72rem;
+				color: var(--accent);
+				background: rgba(56, 189, 248, 0.08);
+				border: 1px solid rgba(56, 189, 248, 0.2);
+				padding: 0.1rem 0.5rem;
+				border-radius: 4px;
+			}
+			.card-desc {
+				color: var(--text-muted);
+				font-size: 0.95rem;
+				line-height: 1.5;
+				margin: 0;
+			}
+			.nav-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 0.75rem;
+			}
+			.nav-card {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1.2rem 1.5rem;
+				background: var(--bg-surface);
+				border: 1px solid var(--border);
+				border-radius: 10px;
+				text-decoration: none;
+				transition: all 0.15s ease;
+			}
+			.nav-card:hover {
+				background: var(--bg-surface-hover);
+				border-color: var(--border-active);
+				transform: translateX(4px);
+			}
+			.nav-card-left {
+				display: flex;
+				flex-direction: column;
+				gap: 0.2rem;
+			}
+			.nav-card-title {
+				font-weight: 600;
+				color: var(--text-primary);
+				font-size: 1.05rem;
+			}
+			.nav-card-sub {
+				color: var(--text-muted);
+				font-size: 0.88rem;
+			}
+			.nav-arrow {
+				font-family: var(--font-mono);
+				color: var(--text-dim);
+				transition: color 0.15s ease, transform 0.15s ease;
+			}
+			.nav-card:hover .nav-arrow {
+				color: var(--accent);
+				transform: translateX(3px);
+			}
+			@media (max-width: 720px) {
+				.hero-title {
+					font-size: 2.2rem;
+				}
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1 style="margin-bottom: 0.5rem;">Siddhant</h1>
-			<p style="color: #8b949e; margin-bottom: 2rem;">Systems programming, concurrency, and daily engineering log.</p>
+			<section class="hero-section">
+				<span class="mono-tag">PUBLIC ACCOUNTABILITY // DEVLOG</span>
+				<h1 class="hero-title">Siddhant</h1>
+				<p class="hero-subtitle">
+					Systems programming, concurrency, and low-level engineering log. Documenting coursework, sprint progress, and technical deep-dives in the open.
+				</p>
+			</section>
 
-			<p>
-				Welcome to my public accountability website. I use this space to track my daily coursework, document low-level systems programming concepts, and maintain discipline.
-			</p>
+			<div class="section-heading">Active Focus Areas</div>
+			<div class="cards-grid">
+				<div class="project-card">
+					<div class="card-header">
+						<h3 class="card-title">KAIST CS Concurrency Course</h3>
+						<span class="card-badge">SYS // MEM</span>
+					</div>
+					<p class="card-desc">
+						Deep dive into hardware memory models, atomic memory ordering, and lock-free concurrent data structures in systems programming.
+					</p>
+				</div>
+				<div class="project-card">
+					<div class="card-header">
+						<h3 class="card-title">The Rust Programming Language</h3>
+						<span class="card-badge">BROWN UNIV EDITION</span>
+					</div>
+					<p class="card-desc">
+						Working through the interactive edition of the Rust Book. Rigorous focus on ownership, borrowing rules, lifetimes, and memory safety without garbage collection.
+					</p>
+				</div>
+			</div>
 
-			<p>
-				Currently working through:
-			</p>
-			<ul>
-				<li><strong>KAIST CS Concurrency Course</strong> — memory models, atomics, and lock-free structures.</li>
-				<li><strong>The Rust Programming Language</strong> (Brown University interactive edition) — ownership, borrowing, and lifetimes.</li>
-			</ul>
-
-			<h2 style="margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.3rem;">Sections</h2>
-			<ul class="nav-list">
-				<li><a href="/diary">Diary & Tasks</a> — Daily action items, evening progress reports, and sprint checklists.</li>
-				<li><a href="/blog">Blog</a> — Technical articles and architectural deep dives.</li>
-				<li><a href="/about">About</a> — More background about my engineering journey.</li>
-			</ul>
+			<div class="section-heading">Explore Engineering Log</div>
+			<div class="nav-grid">
+				<a href="/diary" class="nav-card">
+					<div class="nav-card-left">
+						<span class="nav-card-title">Diary & Tasks</span>
+						<span class="nav-card-sub">Daily sprint checklists, evening progress reports, and coursework accountability.</span>
+					</div>
+					<span class="nav-arrow">-&gt;</span>
+				</a>
+				<a href="/blog" class="nav-card">
+					<div class="nav-card-left">
+						<span class="nav-card-title">Blog & Articles</span>
+						<span class="nav-card-sub">Long-form technical writing, architectural notes, and concurrency concepts.</span>
+					</div>
+					<span class="nav-arrow">-&gt;</span>
+				</a>
+				<a href="/about" class="nav-card">
+					<div class="nav-card-left">
+						<span class="nav-card-title">About Me</span>
+						<span class="nav-card-sub">Background, motivation, and engineering philosophy.</span>
+					</div>
+					<span class="nav-arrow">-&gt;</span>
+				</a>
+			</div>
 		</main>
 		<Footer />
 	</body>

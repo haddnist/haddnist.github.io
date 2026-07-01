@@ -1,56 +1,69 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { status?: string };
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, status } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={`${title} // Siddhant`} description={description || 'Engineering log'} />
 		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
+			article {
+				max-width: 680px;
 				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
 			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: #c9d1d9;
+			.post-header {
+				margin-bottom: 2.5rem;
+				border-bottom: 1px solid var(--border);
+				padding-bottom: 1.75rem;
 			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
+			.meta-row {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				margin-bottom: 0.85rem;
+				font-family: var(--font-mono);
+				font-size: 0.82rem;
+				color: var(--text-muted);
 			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
+			.status-pill {
+				color: var(--accent);
+				background: var(--accent-glow);
+				border: 1px solid rgba(56, 189, 248, 0.3);
+				padding: 0.15rem 0.5rem;
+				border-radius: 9999px;
+				font-weight: 500;
+				font-size: 0.75rem;
+				letter-spacing: 0.02em;
 			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+			.post-title {
+				font-family: var(--font-sans);
+				font-size: 2.4rem;
+				font-weight: 700;
+				letter-spacing: -0.035em;
+				line-height: 1.2;
+				color: var(--text-primary);
+				margin: 0;
 			}
 			.last-updated-on {
 				font-style: italic;
+				color: var(--text-dim);
+				font-size: 0.8rem;
+				margin-top: 0.4rem;
+			}
+			.prose {
+				color: #d1d5db;
+			}
+			@media (max-width: 720px) {
+				.post-title {
+					font-size: 1.85rem;
+				}
 			}
 		</style>
 	</head>
@@ -59,24 +72,21 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
+				<header class="post-header">
+					<div class="meta-row">
+						<FormattedDate date={pubDate} />
+						{status && <><span>•</span><span class="status-pill">{status}</span></>}
 					</div>
+					<h1 class="post-title">{title}</h1>
+					{
+						updatedDate && (
+							<div class="last-updated-on">
+								Updated on <FormattedDate date={updatedDate} />
+							</div>
+						)
+					}
+				</header>
+				<div class="prose">
 					<slot />
 				</div>
 			</article>
