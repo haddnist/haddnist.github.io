@@ -1,124 +1,183 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+/* Sleek Dark Mode & Crisp 16px Typography */
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+	--accent: #00f2fe;
+	--accent-dark: #4facfe;
+	--black: 240, 246, 252;
+	--gray: 139, 148, 158;
+	--gray-light: 33, 38, 45;
+	--gray-dark: 201, 209, 217;
+	--bg-color: #0d1117;
+	--bg-card: #161b22;
+	--border-color: #30363d;
+	--box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
+
 body {
-	font-family: var(--font-atkinson);
+	font-family: var(--font-atkinson), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
+	background: var(--bg-color);
 	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
+	font-size: 16px; /* Reduced from 20px for crisp reading */
+	line-height: 1.65;
 }
+
 main {
-	width: 720px;
+	width: 780px;
 	max-width: calc(100% - 2em);
 	margin: auto;
-	padding: 3em 1em;
+	padding: 2.5em 1em;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.5rem 0;
 	color: rgb(var(--black));
-	line-height: 1.2;
-}
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
+	line-height: 1.25;
 	font-weight: 700;
 }
+
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.7em; }
+h3 { font-size: 1.35em; }
+h4 { font-size: 1.15em; }
+h5 { font-size: 1.05em; }
+
+strong, b {
+	font-weight: 700;
+	color: #fff;
+}
+
 a {
 	color: var(--accent);
+	text-decoration: none;
+	transition: opacity 0.2s;
 }
+
 a:hover {
-	color: var(--accent);
+	opacity: 0.8;
+	text-decoration: underline;
 }
+
 p {
 	margin-bottom: 1em;
 }
+
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1.5em;
 }
-textarea {
-	width: 100%;
-	font-size: 16px;
+
+textarea, input {
+	font-size: 15px;
+	background: var(--bg-card);
+	color: #fff;
+	border: 1px solid var(--border-color);
+	padding: 0.5rem;
+	border-radius: 6px;
 }
-input {
-	font-size: 16px;
-}
+
 table {
 	width: 100%;
+	border-collapse: collapse;
+	margin: 1.5rem 0;
 }
+
+table th, table td {
+	padding: 0.75rem;
+	border-bottom: 1px solid var(--border-color);
+	text-align: left;
+}
+
+table th {
+	color: #fff;
+	background: var(--bg-card);
+}
+
 img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
+	border: 1px solid var(--border-color);
 }
+
 code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	padding: 2px 6px;
+	background-color: var(--bg-card);
+	color: #ff7b72;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
+	font-size: 0.9em;
+	font-family: 'JetBrains Mono', monospace;
 }
+
 pre {
-	padding: 1.5em;
+	padding: 1.25em;
 	border-radius: 8px;
+	background: #161b22 !important;
+	border: 1px solid var(--border-color);
+	overflow-x: auto;
 }
+
 pre > code {
 	all: unset;
+	color: #c9d1d9;
 }
+
 blockquote {
 	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
+	padding: 0.5rem 0 0.5rem 1rem;
+	margin: 1.5rem 0;
+	font-size: 1.05em;
+	color: rgb(var(--gray));
+	background: rgba(0, 242, 254, 0.05);
+	border-radius: 0 6px 6px 0;
 }
+
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-top: 1px solid var(--border-color);
+	margin: 2rem 0;
 }
+
+/* Custom Checkbox Styling for Checklists */
+input[type="checkbox"] {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 18px;
+	height: 18px;
+	border: 2px solid var(--border-color);
+	border-radius: 4px;
+	background: var(--bg-card);
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 8px;
+	cursor: pointer;
+	position: relative;
+	top: -2px;
+}
+
+input[type="checkbox"]:checked {
+	background: #10b981;
+	border-color: #10b981;
+}
+
+input[type="checkbox"]:checked::after {
+	content: '✓';
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	position: absolute;
+	top: -1px;
+	left: 3px;
+}
+
 @media (max-width: 720px) {
 	body {
-		font-size: 18px;
+		font-size: 15px;
 	}
 	main {
-		padding: 1em;
+		padding: 1.5em 1em;
 	}
 }
 
@@ -130,12 +189,7 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }

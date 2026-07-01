@@ -9,40 +9,124 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero {
+				padding: 2rem 0 1.5rem 0;
+				border-bottom: 1px solid var(--border-color);
+				margin-bottom: 2rem;
+			}
+			.hero h1 {
+				font-size: 2.4rem;
+				font-weight: 800;
+				letter-spacing: -0.02em;
+				background: linear-gradient(135deg, #fff 0%, #a5f3fc 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin-bottom: 0.5rem;
+			}
+			.hero p {
+				font-size: 1.15rem;
+				color: #8b949e;
+				max-width: 650px;
+				margin-bottom: 0;
+			}
+			.hub-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.5rem;
+				margin: 2.5rem 0;
+			}
+			.hub-card {
+				background: #161b22;
+				border: 1px solid #30363d;
+				border-radius: 10px;
+				padding: 1.75rem;
+				transition: transform 0.2s, border-color 0.2s;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.hub-card:hover {
+				transform: translateY(-3px);
+				border-color: var(--accent);
+			}
+			.hub-card h2 {
+				font-size: 1.4rem;
+				color: #fff;
+				margin-bottom: 0.5rem;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+			.hub-card p {
+				color: #8b949e;
+				font-size: 0.95rem;
+				margin-bottom: 1.5rem;
+			}
+			.btn-link {
+				display: inline-block;
+				background: rgba(0, 242, 254, 0.1);
+				color: var(--accent);
+				padding: 0.5rem 1rem;
+				border-radius: 6px;
+				font-weight: 600;
+				font-size: 0.9rem;
+				text-decoration: none !important;
+				border: 1px solid rgba(0, 242, 254, 0.2);
+				align-self: flex-start;
+			}
+			.btn-link:hover {
+				background: var(--accent);
+				color: #000 !important;
+				opacity: 1;
+			}
+			@media (max-width: 640px) {
+				.hub-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<h1>⚡ Public Accountability & Devlog Hub</h1>
+				<p>Consistent systems programming, learning Rust, and shipping daily without excuses.</p>
+			</section>
+
+			<section>
+				<p style="font-size: 1.05rem; color: #c9d1d9;">
+					Welcome to my personal command center. I built this public site to track my daily action items, maintain extreme discipline, and publish my technical learnings as I dive deep into systems concurrency.
+				</p>
+
+				<div class="hub-grid">
+					<div class="hub-card">
+						<div>
+							<h2>📋 Diary & Task Tracker</h2>
+							<p>Daily sprint goals, interactive checklists, and evening progress reports. Currently mastering the Brown University Rust Book & KAIST Concurrency.</p>
+						</div>
+						<a href="/diary" class="btn-link">View Daily Diary →</a>
+					</div>
+
+					<div class="hub-card">
+						<div>
+							<h2>📚 Technical Blog</h2>
+							<p>Long-form technical articles, architectural design notes, and deep dives into memory models and ownership.</p>
+						</div>
+						<a href="/blog" class="btn-link">Read Technical Blog →</a>
+					</div>
+				</div>
+			</section>
+
+			<section style="background: rgba(255,255,255,0.02); border: 1px solid #30363d; border-radius: 8px; padding: 1.5rem; margin-top: 3rem;">
+				<h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">🔥 Current Focus Sprint</h3>
+				<ul style="margin: 0; padding-left: 1.25rem; color: #8b949e; font-size: 0.95rem;">
+					<li><strong>Coursework:</strong> KAIST CS Concurrency & Systems Programming</li>
+					<li><strong>Textbook:</strong> Brown University Rust Book (Interactive Edition)</li>
+					<li><strong>Discipline:</strong> Daily shipping & public accountability tracking</li>
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</body>
