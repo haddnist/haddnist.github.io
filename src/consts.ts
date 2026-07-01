@@ -2,4 +2,4 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'Siddhant';
-export const SITE_DESCRIPTION = 'Systems programming, concurrency, and daily engineering log.';
+export const SITE_DESCRIPTION = 'Personal Blog';
