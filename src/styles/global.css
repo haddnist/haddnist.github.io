@@ -17,12 +17,12 @@
 	--text-muted: #8b949e;
 	--text-dim: #5c6470;
 	
-	--accent: #58a6ff;
-	--success: #3fb950;
+	--accent: #00ff66;
+	--success: #00ff66;
 }
 
 ::selection {
-	background: rgba(88, 166, 255, 0.25);
+	background: rgba(0, 255, 102, 0.25);
 	color: #fff;
 }
 
@@ -184,9 +184,8 @@ ul.contains-task-list {
 }
 
 .task-list-item {
-	display: flex;
-	align-items: center;
-	margin-bottom: 0.5rem !important;
+	margin-bottom: 0.6rem !important;
+	line-height: 1.6;
 }
 
 input[type="checkbox"] {
@@ -198,9 +197,9 @@ input[type="checkbox"] {
 	background: var(--bg-root);
 	display: inline-grid;
 	place-content: center;
+	vertical-align: -3px;
 	margin-right: 8px;
 	cursor: pointer;
-	flex-shrink: 0;
 }
 
 input[type="checkbox"]:checked {
